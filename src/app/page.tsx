@@ -1,15 +1,18 @@
+import getSets from "@/actions/get-sets";
+import Sets from "@/components/Sets/Sets";
 
-import { Button } from "@mui/material";
-import Link from "next/link";
+export default async function SetsPage() {
+  const { data } = await getSets();
 
-export default async function Home() {
+  if (!data) {
+    return <div>Página não encontrada</div>;
+  }
 
   return (
-    <main >
-      <Link href="/sets">
-        <Button variant="contained">Sets</Button></Link>
-
-
-    </main>
+    <div>
+      <Sets sets={data} />
+    </div>
   );
 }
+
+export const revalidate = 86400;
