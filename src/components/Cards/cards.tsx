@@ -72,6 +72,7 @@ export default function Cards({ cards }: { cards: PokemonCard[] }) {
                     width={380}
                     alt='card'
                     blurDataURL='/assets/pokemon-booster.png'
+                    placeholder='blur'
                   />
                 </HoloCard>
               </SwiperSlide>)

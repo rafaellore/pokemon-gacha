@@ -27,14 +27,6 @@ export interface PokemonCard {
   };
 }
 
-// Define o tipo de resposta esperada para a API de raridades
-interface RarityResponse {
-  data: {
-    id: string;
-    name: string;
-  }[];
-}
-
 export default async function getCards(setId: string) {
   try {
     const fetchCardsByRarity = async (rarity: string, count: number) => {
@@ -59,9 +51,14 @@ export default async function getCards(setId: string) {
       return cards.sort(() => 0.5 - Math.random()).slice(0, count);
     };
 
-    const rareCards = await fetchCardsByRarity("Rare", 1);
-    const uncommonCards = await fetchCardsByRarity("Uncommon", 3);
     const commonCards = await fetchCardsByRarity("Common", 3);
+
+    const rareCards = await fetchCardsByRarity(
+      "Rare",
+      commonCards.length === 0 ? 7 : 1
+    );
+
+    const uncommonCards = await fetchCardsByRarity("Uncommon", 2);
 
     const boosterPack = [...commonCards, ...uncommonCards, ...rareCards];
 

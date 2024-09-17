@@ -24,7 +24,6 @@ interface StyledHoloCardProps {
     x: number;
     y: number;
   };
-  url: string;
   animated: boolean;
   height: number;
   width: number;
@@ -70,7 +69,6 @@ export const StyledHoloCard = styled.div<StyledHoloCardProps>(
     activeBackgroundPosition,
     activeRotation,
     animated,
-    url,
     height,
     width,
     showSparkles,
@@ -115,11 +113,11 @@ export const StyledHoloCard = styled.div<StyledHoloCardProps>(
         transform: rotateX(0deg) rotateY(0deg);
         &:before {
           transition: 1s;
-          animation: ${configs[rarity].gradientAnimation} 12s ease ;
+          animation: ${configs[rarity].gradientAnimation} 12s ease;
         }
         &:after {
           transition: 1s;
-          animation: ${configs[rarity].sparkleAnimation} 12s ease ;
+          animation: ${configs[rarity].sparkleAnimation} 12s ease;
         }
       `,
   ]
