@@ -1,28 +1,28 @@
 'use client'
 
 import { useState } from 'react';
-import { PokemonCard } from "@/actions/get-cards";
 import Image from "next/image";
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from "swiper/modules";
-import { motion } from 'framer-motion';
-import Tooltip from '@mui/material/Tooltip';
-import './cards.css';
-import { HoloCard } from '../TestingHolo/TestingHolo';
-import { Button } from '@mui/material';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 
+import Tooltip from '@mui/material/Tooltip';
+import { Button } from '@mui/material';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import { useRouter } from 'next/navigation';
+import { PokemonCard } from "@/actions/get-cards";
+import { HoloCard } from '../TestingHolo/TestingHolo';
+import { motion } from 'framer-motion';
+import './cards.css';
+
 
 export default function Cards({ cards }: { cards: PokemonCard[] }) {
   const [showSwiper, setShowSwiper] = useState(false);
   const [animationTriggered, setAnimationTriggered] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const router = useRouter();
 
   const handleClick = () => {
     setAnimationTriggered(true);
@@ -38,11 +38,11 @@ export default function Cards({ cards }: { cards: PokemonCard[] }) {
   }
 
   const goBack = () => {
-    router.back();
+    window.history.back();
   };
 
   const reloadPage = () => {
-    router.refresh();
+    window.location.reload()
   };
 
   return (
@@ -95,29 +95,29 @@ export default function Cards({ cards }: { cards: PokemonCard[] }) {
                 </SwiperSlide>)
             })}
           </Swiper>
-
-          {showButton && (
-            <div className="w-full flex gap-4">
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={goBack}
-              >
-                <ArrowBackIcon />
-              </Button>
-
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={reloadPage}
-              >
-                <RotateLeftIcon />
-              </Button>
-            </div>
-          )}
         </>
+      )}
+
+      {showButton && (
+        <div className="w-full flex gap-4">
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={goBack}
+          >
+            <ArrowBackIcon />
+          </Button>
+
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={reloadPage}
+          >
+            <RotateLeftIcon />
+          </Button>
+        </div>
       )}
     </div>
   );
