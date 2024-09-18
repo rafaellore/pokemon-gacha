@@ -24,7 +24,6 @@ export const HoloCard = ({ children, height, width, showSparkles, rarity }: Prop
   const ref = useRef<HTMLInputElement>(null);
 
   const handleOnMouseOver = (event: any) => {
-    setAnimated(false);
     setHover(true);
 
     const card = ref.current;
@@ -52,7 +51,6 @@ export const HoloCard = ({ children, height, width, showSparkles, rarity }: Prop
   };
 
   const handleOnMouseOut = () => {
-    setHover(false);
     setAnimated(true);
     setActiveRotation({ x: 0, y: 0 });
   };

@@ -15,7 +15,6 @@ export interface CardSet {
 
 export default async function getSets() {
   try {
-    // Fazer a requisição para obter todos os sets
     const response = await fetch(`https://api.pokemontcg.io/v2/sets`, {
       method: "GET",
       headers: {
@@ -23,7 +22,7 @@ export default async function getSets() {
       } as HeadersInit,
     });
 
-    if (!response.ok) throw new Error(`Erro ao pegar sets.`);
+    if (!response.ok) throw new Error(`Error when fetching sets.`);
 
     const data = await response.json();
 

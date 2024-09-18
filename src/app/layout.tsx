@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='bg-gradient-to-r from-violet-600 to-indigo-600'>
+      <body className='bg-zinc-950'>
         <ClientThemeProvider>
           {children}
         </ClientThemeProvider>

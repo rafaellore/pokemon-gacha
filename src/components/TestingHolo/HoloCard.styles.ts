@@ -6,7 +6,7 @@ import {
   whiteGradientBackground,
   sparkles,
 } from "./styles/Common.styles";
-import { gradientBackground } from "./styles/Rare.styles";
+import { gradientBackground, rareHoverEffect } from "./styles/Rare.styles";
 import {
   gradientAndPngBackgroundConfig,
   holoGradientAnimationPng,
@@ -38,6 +38,7 @@ interface Config {
   sparkles: string;
   sparkleAnimation: Keyframes;
   gradientAnimation: Keyframes;
+  hoverEffect?: string;
 }
 
 const configs: { [key in Rarity]: Config } = {
@@ -60,6 +61,7 @@ const configs: { [key in Rarity]: Config } = {
     gradientAnimation: holoGradientAnimation,
     background: gradientBackground,
     sparkles,
+    hoverEffect: rareHoverEffect,
   },
 };
 
@@ -78,7 +80,7 @@ export const StyledHoloCard = styled.div<StyledHoloCardProps>(
       width: ${width}px;
       height: ${height}px;
       background-color: #211799;
-      background-size: cover; /* Ensure no background image conflicts */
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       border-radius: 5% / 3.5%;
@@ -91,6 +93,7 @@ export const StyledHoloCard = styled.div<StyledHoloCardProps>(
       vertical-align: middle;
       margin: 20px 10px;
       transform: rotateX(${activeRotation.y}deg) rotateY(${activeRotation.x}deg);
+      ${configs[rarity].hoverEffect}
       &:before,
       &:after {
         ${configs[rarity].background}
